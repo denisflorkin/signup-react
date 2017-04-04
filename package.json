@@ -1,0 +1,30 @@
+{
+  "name": "signup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "browserify": "mkdir -p js && browserify --debug app/main.js -o js/app.js -t [ babelify --presets [ es2017 ] --plugins [ transform-es2015-modules-commonjs  transform-react-jsx ] ]",
+    "watchify": "mkdir -p js && watchify app/main.js  -o js/app.js --debug -v -t [ babelify --presets [ es2017 ] --plugins [ transform-es2015-modules-commonjs  transform-react-jsx ] ]",
+    "dev": " # this will most likely not work on window",
+    "dev": "NODE_ENV=dev npm run watchify",
+    "build": " # this will most likely not work on window",
+    "build": "NODE_ENV=production npm run browserify"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.16.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.0",
+    "babel-plugin-transform-react-jsx": "^6.23.0",
+    "babel-preset-es2017": "^6.16.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.3",
+    "redux": "^3.6.0",
+    "watchify": "^3.7.0"
+  }
+}
