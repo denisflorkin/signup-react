@@ -5,11 +5,11 @@
 export const ADD_ONE = 'app/signup/ADD_ONE'
 export const UPDATE_FORM_STATE = 'app/signup/UPDATE_FORM_STATE'
 export const CLEAR_FORM_ERROR = 'app/signup/CLEAR_FORM_ERROR'
+export const VALIDATE_FORM = 'app/signup/VALIDATE_FORM'
 
 export const POST_FORM = 'app/signup/POST_FORM'
 export const POST_FORM_SUCCEEDED = 'app/signup/POST_FORM_SUCCEEDED'
 export const POST_FORM_FAILED = 'app/signup/POST_FORM_FAILED'
-
 
 
 /**
@@ -46,5 +46,12 @@ export function postFormFail(formData) {
 export function clearFormError() {
   return {
     type: CLEAR_FORM_ERROR,
+  }
+}
+
+export function validateForm(formData) {
+  return {
+    type: VALIDATE_FORM,
+    formData,
   }
 }

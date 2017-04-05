@@ -2,12 +2,16 @@
 import React from 'react'
 
 
+const style = {
+  minHeight: '2.2em',
+}
+
 export function FeedbackMsg(props) {
-  const { error } = props
+  const { error: { message } } = props
 
   return (
-    <div>
-      { error }
+    <div style={style}>
+      { message }
     </div>
     )
 }

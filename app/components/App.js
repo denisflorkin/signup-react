@@ -1,8 +1,8 @@
 
 import React from 'react'
-import { connect } from 'react-redux'
 
-import Signupfom from './SignupForm'
+import Signupfom from '../containers/SignupForm'
+
 
 const style = {
   width: '94%',
@@ -14,15 +14,12 @@ const style = {
   fontFamily: 'Helvetica, Arial, sans-serif'
 }
 
-export function App(props) {
-  const { stuff } = props
-
+export function App() {
   return (
-    <div style={style}>
+    <div style={ style } >
       <h1>Sign Up</h1>
       <Signupfom />
     </div>
   )
 }
-
 export default App
