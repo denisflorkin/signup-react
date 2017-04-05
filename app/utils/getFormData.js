@@ -6,8 +6,8 @@
 export const isHTMLFormElement = (elem) =>
   !!Object.prototype.toString.call(elem).match(/\[object HTMLFormElement\]/) // eslint-disable-line no-useless-escape
 
-export const isHTMLSelectElement = (elem) =>
-  !!Object.prototype.toString.call(elem).match(/\[object HTMLSelectElement\]/)  // eslint-disable-line no-useless-escape
+// export const isHTMLSelectElement = (elem) =>
+//   !!Object.prototype.toString.call(elem).match(/\[object HTMLSelectElement\]/)  // eslint-disable-line no-useless-escape
 
 export const getFormData = (HTMLFormElement) => {
   if (!HTMLFormElement && !isHTMLFormElement(HTMLFormElement)) {
@@ -22,6 +22,7 @@ export const getFormData = (HTMLFormElement) => {
   for (let i = 0; i < elements.length; i++) { // eslint-disable-line no-plusplus
     let theName
     let theValue
+    /*
     if (isHTMLSelectElement(elements[i])) {  // check `selected` options
       const select = elements[i]
       const { options } = select
@@ -36,9 +37,10 @@ export const getFormData = (HTMLFormElement) => {
       theName = select.name
       theValue = selectedOptions
     } else {
+      */
       theName = elements[i].name
       theValue = elements[i].value
-    }
+    /* } */
 
     if (theValue && theName !== '') {  // ignore numerical HTMLCollectionFromControl key
       forRes[theName] = theValue

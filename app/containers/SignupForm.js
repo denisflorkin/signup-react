@@ -10,8 +10,10 @@ import { SIGNUP_FORM_ID } from './constants'
 
 import { getFormData } from '../utils/getFormData'
 
+import Form from '../components/Form'
 import Input from '../components/Input'
 import FeedBackMsg from '../components/FeedBackMsg'
+import SubmitInput from '../components/SubmitInput'
 
 
 export class SignupForm extends React.PureComponent {
@@ -37,7 +39,7 @@ export class SignupForm extends React.PureComponent {
     } = this
 
     return (
-      <form name={SIGNUP_FORM_ID} onSubmit={handleFormSubmit.bind(this)} >
+      <Form name={SIGNUP_FORM_ID} onSubmit={handleFormSubmit.bind(this)} >
 
         <label htmlFor="name">Name</label>
         <Input id="name" name="name" type="text"
@@ -56,8 +58,8 @@ export class SignupForm extends React.PureComponent {
           onChange={handleFormChange.bind(this)} />
 
         <FeedBackMsg />
-        <Input type='submit' value="Send" />
-      </form>
+        <SubmitInput />
+      </Form>
     )
   }
 }
