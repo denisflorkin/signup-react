@@ -1,24 +1,37 @@
 
 ## a signup form made with react and redux
 
-## 1
+### 1
 `$ git clone git@github.com:denisflorkin/signup-react.git signup-react`
-**OR**
+
+or
+
 `$ git clone https://github.com/denisflorkin/signup-react signup-react`
 
-## 2
+### 2
 `$ cd signup-react`
 
-## 3
+
+### 3
 `$ npm i`
-**OR**
+
+or
+
 `$ yarn`
 
-## 3
+
+### 3
 `$ npm start`
-**OR**
+
+or
+
 `$ npm start -- <PORT>`
 
-## then 
+
+### then 
 Visit http://localhost:5000
+
+or 
+
+Visit http://localhost:<PORT>
 
