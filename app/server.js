@@ -3,7 +3,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const log = console.log.bind(console)
-const PORT = 5000
+console.log(process.argv[2])
+const PORT = Number(process.argv[2]) || 5000
 
 const users = []
 const app = express()
@@ -48,5 +49,5 @@ app.get('/', function (req, res, next) {
 
 app.listen(PORT, function () {
   console.log(`listening on port ${PORT}!
-  open http://localhost:5000 in your browser`)
+  open http://localhost:${PORT} in your browser`)
 })

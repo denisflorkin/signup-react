@@ -43,10 +43,10 @@ export const getFormData = (HTMLFormElement) => {
  * initialFormData type data => see constants
  */
 export const allInputsHaveATruthyValue = (formData) => (
-  formData.name && // formData.name.length > 0 &&
-  formData.email && // formData.email.length > 0 && 
-  formData.password && // formData.password.length > 0 &&
-  formData.passwordConfirm && // formData.passwordConfirm.length > 0
+  formData.name &&
+  formData.email &&
+  formData.password &&
+  formData.passwordConfirm
 )
 
 /**

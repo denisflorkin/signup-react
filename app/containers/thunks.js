@@ -23,7 +23,7 @@ export const postFormThunk = (formData) => (dispatch) => {
   
   const opts = getPostFormThunkReqOpts(formData)
 
-  return request('http://localhost:5000/signup', opts) 
+  return request('/signup', opts) 
   // return request('http://localhost/unexistingURLForErrHandlingTestPurp', opts)
     .then(res => {
       if (res.message === 'signup success') {
