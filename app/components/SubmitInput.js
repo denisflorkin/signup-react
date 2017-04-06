@@ -1,23 +1,39 @@
 
 import React from 'react'
+import theme from '../utils/theme'
 
+console.log(theme)
+
+const { darkGray, blue } = theme
+
+console.log(darkGray)
 
 const style = {
   alignSelf: 'flex-end',
-  border: '1px solid lightgray',
-  padding: '4px 8px',
-  margin: '8px auto',
+  padding: '4px 24px',
+  margin: '2px auto',
   fontSize: '1.2em',
   marginRight: 0,
   textTransform: 'uppercase',
+  borderRadius: 0,
+  border: 'none',
+  background: 'transparent',
+  color: darkGray,
+  border: '1px solid',
+
 }
 
 export function SubmitInput(props) {
-  const { stuff } = props
+  const { formIsValid } = props
+
+  const finalStyle = {
+    ...style,
+    ...(formIsValid ? { color: blue } : {} )
+  }
 
   return (
     <input
-      style={style}
+      style={finalStyle}
       type="submit"
       value="Send"
       {...props}

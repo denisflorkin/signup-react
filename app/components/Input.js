@@ -1,17 +1,15 @@
 'use strict';
 
 import React, { PropTypes } from 'react'
+import theme from '../utils/theme'
 
-
-const green = '#4CAF50'
-const red = '#FF9800'
-const gray = 'lightgray'
+const { green, red, gray } = theme
 
 const style = {
   width: '100%',
   display: 'block',
   boxSizing:'border-box',
-  border: 'none',
+  border: '1px solid transparent',
   outline: 'none',
   borderBottom: `2px solid ${gray}`,
   padding: '4px 0',
@@ -20,10 +18,11 @@ const style = {
 }
 
 const erroredStyle = {
-    borderBottom: `2px solid ${red}`, // orange
+    border: `1px dotted ${red}`,  // a `!` right aligned in the field would be prettier
+    borderBottom: `2px solid ${red}`,
 }
 const validStyle = {
-    borderBottom: `2px solid ${green}`, //green
+    borderBottom: `2px solid ${green}`,
 }
 
 export function Input(props) {

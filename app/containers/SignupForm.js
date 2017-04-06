@@ -70,7 +70,7 @@ export class SignupForm extends React.PureComponent {
 
         <FeedbackMsg error={formError} />
 
-        <SubmitInput />
+        <SubmitInput formIsValid={!formError} />
       </Form>
     )
   }
