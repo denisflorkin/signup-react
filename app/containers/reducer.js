@@ -27,6 +27,7 @@ const initialState = {
 export default function signupReducer(state = initialState, action) {
   switch (action.type) {
       case UPDATE_FORM_STATE:
+        // hash the data, or maybe work over https
 
         const formError = validateForm(action.newFormState)
         console.log('formError', formError)

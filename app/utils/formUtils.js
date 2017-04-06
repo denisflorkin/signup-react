@@ -24,7 +24,7 @@ export const getFormData = (HTMLFormElement) => {
     theName = elements[i].name
     theValue = elements[i].value
 
-    if (theValue /*&& theName !== ''*/) {  // ignore numerical HTMLCollectionFromControl key
+    if (theValue && theName !== '') {  // ignore numerical HTMLCollectionFromControl key
       forRes[theName] = theValue
     }
   }
