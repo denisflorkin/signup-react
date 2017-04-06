@@ -50,7 +50,7 @@ export default function signupReducer(state = initialState, action) {
       case POST_FORM_FAILED:
         return Object.assign({}, state, {
           isFetching: false,
-          error: action,
+          error: action.error,
         })
 
       case CLEAR_FORM_ERROR:

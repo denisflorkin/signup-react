@@ -1,4 +1,7 @@
 
+import { postFormThunk } from './thunks'
+
+
 /**
  * actions
  */
@@ -13,19 +16,12 @@ export const POST_FORM_FAILED = 'app/signup/POST_FORM_FAILED'
 
 
 /**
- * actions creators
+ * sync actions creators
  */
 export function updateFormState(newFormState) {
   return {
     type: UPDATE_FORM_STATE,
     newFormState,
-  }
-}
-
-export function postForm(formData) {
-  return {
-    type: POST_FORM,
-    formData,
   }
 }
 
@@ -36,10 +32,10 @@ export function postFormSuccess(formData) {
   }
 }
 
-export function postFormFail(formData) {
+export function postFormFail(error) {
   return {
     type: POST_FORM_FAILED,
-    formData,
+    error,
   }
 }
 
@@ -55,3 +51,9 @@ export function validateForm(formData) {
     formData,
   }
 }
+
+
+/**
+ * async actions creators
+ */
+export const postForm = (formData) => postFormThunk

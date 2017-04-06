@@ -40,8 +40,10 @@ export const getFormData = (HTMLFormElement) => {
  * with a message property
  */
 export function validateForm(formData) {
-
-  let error = true
+  const emailRegExp =
+    RegExp(/(([^@]\.[^@])+)?[^@]+@\w+\.\w+((\.\w+)+)?/)
+    
+  const error = true
 
   /** if all the fields are filed in */
   if (formData.name && formData.name.length > 0 &&
@@ -50,7 +52,7 @@ export function validateForm(formData) {
       formData.passwordConfirm && formData.passwordConfirm.length > 0) {
   
     /** if the email is not valid */
-    if (!formData.email.match(/(([^@]\.[^@])+)?[^@]+\.?@\w+\.\w+((\.\w+)+)?/)) {
+    if (!formData.email.match(emailRegExp)) {
       return { message: 'You have to provide a valid email' }
     }
 

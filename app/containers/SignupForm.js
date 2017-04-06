@@ -47,19 +47,19 @@ export class SignupForm extends React.PureComponent {
       <Form name={SIGNUP_FORM_ID} onSubmit={handleFormSubmit.bind(this)} >
 
         <label htmlFor="name">Name</label>
-        <Input id="name" name="name" type="text"
+        <Input id="name" name="name" type="text" defaultValue="er"
           onChange={handleFormChange.bind(this)} />
 
         <label htmlFor="email">Email</label>
-        <Input id="email" name="email" type="email"
+        <Input id="email" name="email" type="email" defaultValue="er@ert.rt"
           onChange={handleFormChange.bind(this)} />
 
         <label htmlFor="password">Password</label>
-        <Input id="password" name="password" type="password"
+        <Input id="password" name="password" type="password" defaultValue="e"
           onChange={handleFormChange.bind(this)} />
 
         <label htmlFor="password-confirm">Password confirmation</label>
-        <Input id="passwordConfirm" name="passwordConfirm" type="password"
+        <Input id="passwordConfirm" name="passwordConfirm" type="password" defaultValue="e"
           onChange={handleFormChange.bind(this)} />
 
         { !formError ? 'Good to go' : (<FeedbackMsg error={formError} />) }

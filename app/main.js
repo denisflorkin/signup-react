@@ -2,28 +2,36 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
 
 import App from './components/App'
-
-import { createStore } from 'redux'
 import signupReducer from './containers/reducer'
+
 
 
 /**
  * create the store
  */
-let store
-if (process.env === 'production') {
-  store = createStore(signupReducer)
-} else {
-  store = createStore(
+// If Redux DevTools Extension is installed use it, otherwise use Redux compose
+const composeEnhancers =
+  process.env.NODE_ENV !== 'production' &&
+  typeof window === 'object' &&
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose;
+
+const middlewares = [
+  thunk,
+];
+
+const enhancers = [
+  applyMiddleware(...middlewares),
+];
+
+const store = createStore(
     signupReducer,
-    (
-      window.__REDUX_DEVTOOLS_EXTENSION__ &&
-      window.__REDUX_DEVTOOLS_EXTENSION__()
-    )
+    composeEnhancers(...enhancers)
   )
-}
 
 
 function init() {
