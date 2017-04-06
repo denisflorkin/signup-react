@@ -5,6 +5,8 @@ import React from 'react'
 const style = {
   minHeight: '3em',
   fontFamily: 'Georgia, serif',
+  display: 'flex',
+  alignItems: 'center',
 }
 
 export function FeedbackMsg(props) {

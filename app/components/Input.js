@@ -1,3 +1,4 @@
+'use strict';
 
 import React, { PropTypes } from 'react'
 
@@ -13,8 +14,8 @@ const style = {
   border: 'none',
   outline: 'none',
   borderBottom: `2px solid ${gray}`,
-  padding: '4px 8px',
-  margin: '8px auto',
+  padding: '4px 0',
+  margin: '2px auto 16px auto',
   fontSize: '1.2em',
 }
 
@@ -43,6 +44,8 @@ export function Input(props) {
       return style
     }
   })(error)
+
+  // error && delete props.error; // https://fb.me/react-unknown-prop
 
   return (
     <input

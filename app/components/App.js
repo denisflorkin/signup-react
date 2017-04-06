@@ -2,22 +2,25 @@
 import React from 'react'
 
 import Signupfom from '../containers/SignupForm'
-
+import H1 from './H1'
 
 const style = {
-  width: '94%',
+  // width: '94%',
   maxWidth: '380px',
   margin: '0 auto',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
-  fontFamily: 'Helvetica, Arial, sans-serif'
+  fontFamily: 'Helvetica, Arial, sans-serif',
+  padding: '16px',
+  border: '1px solid rgba(35, 70, 100, .09)',
+  boxShadow: '0 0 16px 2px rgba(35, 70, 100, .06)',
 }
 
 export function App() {
   return (
     <div style={ style } >
-      <h1>Sign Up</h1>
+      <H1>Sign Up</H1>
       <Signupfom />
     </div>
   )

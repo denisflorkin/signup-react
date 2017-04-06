@@ -8,6 +8,7 @@ import { updateFormState, postForm } from './actions'
 import { makeSelectFormError, makeSelectFormState } from './selectors'
 import { getFormData, validateForm } from '../utils/formUtils'
 import Form from '../components/Form'
+import Label from '../components/Label'
 import Input from '../components/Input'
 import FeedbackMsg from '../components/FeedbackMsg'
 import SubmitInput from '../components/SubmitInput'
@@ -47,22 +48,22 @@ export class SignupForm extends React.PureComponent {
     return (
       <Form name={SIGNUP_FORM_ID} onSubmit={handleFormSubmit.bind(this)} >
 
-        <label htmlFor="name">Name</label>
+        <Label htmlFor="name">Name</Label>
         <Input id="name" name="name" type="text" 
           error={formError}
           onChange={handleFormChange.bind(this)} />
 
-        <label htmlFor="email">Email</label>
+        <Label htmlFor="email">Email</Label>
         <Input id="email" name="email" type="email" 
           error={formError}
           onChange={handleFormChange.bind(this)} />
 
-        <label htmlFor="password">Password</label>
+        <Label htmlFor="password">Password</Label>
         <Input id="password" name="password" type="password" 
           error={formError}
           onChange={handleFormChange.bind(this)} />
 
-        <label htmlFor="password-confirm">Password confirmation</label>
+        <Label htmlFor="password-confirm">Password confirmation</Label>
         <Input id="passwordConfirm" name="passwordConfirm" type="password" 
           error={formError}
           onChange={handleFormChange.bind(this)} />
