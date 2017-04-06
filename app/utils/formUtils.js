@@ -41,8 +41,9 @@ export const getFormData = (HTMLFormElement) => {
  */
 export function validateForm(formData) {
   const emailRegExp =
-    RegExp(/(([^@]\.[^@])+)?[^@]+@\w+\.\w+((\.\w+)+)?/)
-    
+    // RegExp(/(([^@]\.[^@])+)?[^@]+@\w+\.\w+((\.\w+)+)?/)
+    RegExp(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,})\.([a-z]{2,}(?:\.[a-z]{2})?)$/i)
+  
   const error = true
 
   /** if all the fields are filed in */
