@@ -8,7 +8,8 @@
     "browserify": "mkdir -p js && browserify --debug app/main.js -o js/app.js -t [ babelify --presets [ es2017 ] --plugins [ transform-es2015-modules-commonjs transform-object-rest-spread transform-es2015-destructuring  transform-react-jsx ] ]",
     "watchify": "mkdir -p js && watchify app/main.js  -o js/app.js --debug -v -t [ babelify --presets [ es2017 ] --plugins [ transform-es2015-modules-commonjs  transform-es2015-modules-commonjs transform-object-rest-spread transform-es2015-destructuring  transform-react-jsx ] ]",
     "dev": "NODE_ENV=dev npm run watchify",
-    "build": "NODE_ENV=production npm run browserify"
+    "build": "NODE_ENV=production npm run browserify",
+    "start": "node app/server"
   },
   "author": "",
   "license": "ISC",
@@ -21,6 +22,7 @@
     "babel-preset-es2017": "^6.16.0",
     "babelify": "^7.3.0",
     "browserify": "^14.3.0",
+    "express": "^4.15.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
