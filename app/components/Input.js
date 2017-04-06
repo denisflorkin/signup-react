@@ -18,7 +18,9 @@ const style = {
 }
 
 const erroredStyle = {
-    border: `1px dotted ${red}`,  // a `!` right aligned in the field would be prettier
+    // a `!` right aligned within in the field 
+    // would be prettier, maybe in a :after
+    border: `1px dotted ${red}`,  
     borderBottom: `2px solid ${red}`,
 }
 const validStyle = {
@@ -26,10 +28,12 @@ const validStyle = {
 }
 
 export function Input(props) {
-  const { error } = props
+  const {
+    error,
+    
+    ...filterHTMLPropsOnly,
+  } = props
   
-  // could do a ternary, but probably 
-  // wouldn't help readability anyway
   const finalStyle = ((error) => {
     if (!error) { return { ...style, ...validStyle } }
 
@@ -44,12 +48,10 @@ export function Input(props) {
     }
   })(error)
 
-  // error && delete props.error; // https://fb.me/react-unknown-prop
-
   return (
     <input
       style={finalStyle}
-      { ...props }
+      { ...filterHTMLPropsOnly }
     />
     )
 }

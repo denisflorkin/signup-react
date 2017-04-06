@@ -1,43 +1,64 @@
 
 import React from 'react'
 import theme from '../utils/theme'
-
-console.log(theme)
+import Loader from './Loader'
+import Checkmark from './Checkmark'
 
 const { darkGray, blue } = theme
 
-console.log(darkGray)
 
-const style = {
+const wrapperStyle = {
+  width: '140px',
+  height: '38px',
   alignSelf: 'flex-end',
+  marginRight: 0,
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  color: darkGray,
+  border: '1px solid',
+}
+
+const inputStyle = {
+  width: '100%',
   padding: '4px 24px',
   margin: '2px auto',
   fontSize: '1.2em',
-  marginRight: 0,
   textTransform: 'uppercase',
   borderRadius: 0,
   border: 'none',
   background: 'transparent',
-  color: darkGray,
-  border: '1px solid',
 
 }
 
 export function SubmitInput(props) {
-  const { formIsValid } = props
+  const {
+    formIsValid,
+    isFetching,
+    signupSucceeded,
+    error,
 
-  const finalStyle = {
-    ...style,
-    ...(formIsValid ? { color: blue } : {} )
+    ...filterHTMLPropsOnly,
+  } = props
+
+  if (isFetching) {
+    return <div style={wrapperStyle} ><Loader /></div>
+  }
+
+  if (signupSucceeded) {
+    return <div style={wrapperStyle} ><Checkmark /></div>
   }
 
   return (
-    <input
-      style={finalStyle}
-      type="submit"
-      value="Send"
-      {...props}
-    />
-    )
+    <div style={wrapperStyle} >
+      
+      <input
+        style={inputStyle}
+        type="submit"
+        value="Send"
+        {...filterHTMLPropsOnly}
+      />
+    </div>
+  )
 }
 export default SubmitInput

@@ -2,7 +2,7 @@
 // import express from 'express'
 const express = require('express')
 const bodyParser = require('body-parser')
-
+const log = console.log.bind(console)
 const PORT = 5000
 
 const users = []
@@ -20,10 +20,23 @@ app.use(function(req, res, next) { /** CORS middleware */
   .use(express.static('js'))
 
 /** handle register request */
-app.post('/', function (req, res, next) {
-  users.push(req.body) // let's assume it's all good
-  console.log(JSON.stringify(users, true, 2, 2))
-  res.send({ message: 'signup success' })
+app.post('/signup', function (req, res, next) {
+  // let's assume it's all good
+  // do something with that...
+  users.push(req.body) 
+  log(`${req.body.name} just signed up`)
+
+  
+  // delay response
+  let stoREF = setTimeout(() => {
+    if (req.body.name === 'aquaman') {
+      res.send({ message: 'nope' })
+    } else {
+      res.send({ message: 'signup success' })
+    }
+    global.clearTimeout(stoREF)
+  }, 2000) 
+
 })
 
 

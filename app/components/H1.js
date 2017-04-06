@@ -3,7 +3,7 @@ import React from 'react'
 
 
 const style = {
-  marginTop: '8px',
+  margin: '8px 0',
 }
 
 export function H1(props) {

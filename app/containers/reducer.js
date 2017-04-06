@@ -1,68 +1,77 @@
 
 import {
-  UPDATE_FORM_STATE,
+  CLEAR_ERROR,
   CLEAR_FORM_ERROR,
+  UPDATE_FORM_STATE,
   VALIDATE_FORM,
+  SET_IS_FETCHING,
 
   POST_FORM,
   POST_FORM_SUCCEEDED,
   POST_FORM_FAILED,
 } from './actions'
 
+import { initialFormState } from './constants'
 import { validateForm } from '../utils/formUtils'
 
+
 const initialState = {
-  formState: {
-    name: '',
-    email: '',
-    password: '',
-    passwordConfirm: '',
-  },
+  ...initialFormState,
   formError: true,
   error: false,
   isFetching: false,
-  signupSuccess: false,
+  signupSucceeded: false,
 }
 
 export default function signupReducer(state = initialState, action) {
   switch (action.type) {
       case UPDATE_FORM_STATE:
-        // hash the data, or maybe work over https
-
         const formError = validateForm(action.newFormState)
-        console.log('formError', formError)
         return {
             ...state,
             formState: action.newFormState,
             formError,
           }
 
-      case POST_FORM:
-        return Object.assign({}, state, {
-          isFetching: true,
-        })
+      /** handled by the thunk */
+      // case POST_FORM:
+      //   return Object.assign({}, state, {
+      //     isFetching: true,
+      //   })
+
+      case SET_IS_FETCHING:
+        return { 
+          ...state,
+          isFetching: true
+        }
+
+      case CLEAR_ERROR:
+        return { 
+          ...state, 
+          error: false
+        }
 
       case POST_FORM_SUCCEEDED:
-        return Object.assign({}, state, {
+        return { 
+          ...state,
           isFetching: false,
-          signupSuccess: true,
-        })
+          signupSucceeded: true,
+          error: false,
+          formError: false,
+        }
 
       case POST_FORM_FAILED:
-        return Object.assign({}, state, {
+        return {
+          ...state,
           isFetching: false,
           error: action.error,
-        })
-
-      case CLEAR_FORM_ERROR:
-        return Object.assign({}, state, {
-          formError: false,
-        })
+        }
 
       case VALIDATE_FORM:
-        return Object.assign({}, state, {
+        return {
+          ...state,
           formError: false,
-        })
+        }
 
       default:
         return state

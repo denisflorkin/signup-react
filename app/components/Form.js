@@ -3,9 +3,9 @@ import React from 'react'
 
 
 const style = {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
 }
 
 export function Form(props) {

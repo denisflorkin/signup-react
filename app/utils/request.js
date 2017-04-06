@@ -1,9 +1,9 @@
 import 'whatwg-fetch';
 
 /**
- * request.js from :
- * https://github.com/react-boilerplate/react-boilerplate/blob/master/app/utils/request.js
- * (edited by me)
+ * request.js from reactboilerplate :
+ * https://goo.gl/cgfZ3G
+ * (slightly edited by me)
  */
 
 
@@ -27,14 +27,16 @@ function parseJSON(response) {
  *
  * @return {object|undefined} Returns either the response, or throws an error
  */
-function checkStatus(response) {
+export function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response;
   }
-  const error = new Error(response.statusText);
+  // console.log('response', response)
+  const error = new Error(response.statusText || response.status);
   error.status = response.status;
   error.statusText = response.statusText;
   error.response = response;
+  // console.log('error', error)
 
   throw error;
 }

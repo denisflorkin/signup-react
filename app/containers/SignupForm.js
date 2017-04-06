@@ -5,7 +5,13 @@ import { createStructuredSelector } from 'reselect'
 
 import { SIGNUP_FORM_ID } from './constants'
 import { updateFormState, postForm } from './actions'
-import { makeSelectFormError, makeSelectFormState } from './selectors'
+import {
+  makeSelectError,
+  makeSelectFormError,
+  makeSelectFormState,
+  makeSelectIsFetching,
+  makeSelectSignupSucceeded,
+} from './selectors'
 import { getFormData, validateForm } from '../utils/formUtils'
 import Form from '../components/Form'
 import Label from '../components/Label'
@@ -25,9 +31,8 @@ export class SignupForm extends React.PureComponent {
       formError,
     } = this.props
 
-    if (!formError) {
+    if (!formError)
       onFormSubmit(formState)
-    }
   }
 
   handleFormChange() {
@@ -40,6 +45,9 @@ export class SignupForm extends React.PureComponent {
       props: {
         formState,
         formError,
+        error,
+        isFetching,
+        signupSucceeded,
       },
       handleFormSubmit,
       handleFormChange,
@@ -49,41 +57,59 @@ export class SignupForm extends React.PureComponent {
       <Form name={SIGNUP_FORM_ID} onSubmit={handleFormSubmit.bind(this)} >
 
         <Label htmlFor="name">Name</Label>
-        <Input id="name" name="name" type="text" 
+        <Input id="name" name="name" type="text"
           error={formError}
           onChange={handleFormChange.bind(this)} />
 
         <Label htmlFor="email">Email</Label>
-        <Input id="email" name="email" type="email" 
+        <Input id="email" name="email" type="email"
           error={formError}
           onChange={handleFormChange.bind(this)} />
 
         <Label htmlFor="password">Password</Label>
-        <Input id="password" name="password" type="password" 
+        <Input id="password" name="password" type="password"
           error={formError}
           onChange={handleFormChange.bind(this)} />
 
         <Label htmlFor="password-confirm">Password confirmation</Label>
-        <Input id="passwordConfirm" name="passwordConfirm" type="password" 
+        <Input id="passwordConfirm" name="passwordConfirm" type="password"
           error={formError}
           onChange={handleFormChange.bind(this)} />
 
-        <FeedbackMsg error={formError} />
+        <FeedbackMsg 
+          formError={formError}
+          error={error} 
+          formState={formState}
+          isFetching={isFetching}
+          signupSucceeded={signupSucceeded} />
 
-        <SubmitInput formIsValid={!formError} />
+        <SubmitInput
+          formIsValid={!formError}
+          isFetching={isFetching}
+          signupSucceeded={signupSucceeded} />
+
       </Form>
     )
   }
 }
 
 SignupForm.propTypes = {
+    /** dispatch */
     onFormChange: PropTypes.func.isRequired,
     onFormSubmit: PropTypes.func.isRequired,
+    
+    /** props */
+    error: PropTypes.oneOfType([
+      PropTypes.object.isRequired,
+      PropTypes.bool.isRequired,
+    ]),
     formError: PropTypes.oneOfType([
       PropTypes.object.isRequired,
       PropTypes.bool.isRequired,
     ]),
     formState: PropTypes.object.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    signupSucceeded: PropTypes.bool.isRequired,
 }
 
 function mapDispatchToProps(dispatch) {
@@ -94,8 +120,11 @@ function mapDispatchToProps(dispatch) {
 }
 
 const mapStateToProps = createStructuredSelector({
+  error: makeSelectError(),
   formError: makeSelectFormError(),
   formState: makeSelectFormState(),
+  isFetching: makeSelectIsFetching(),
+  signupSucceeded: makeSelectSignupSucceeded(),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignupForm)
