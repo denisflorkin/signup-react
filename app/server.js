@@ -31,11 +31,9 @@ app.post('/', function (req, res, next) {
 app.get('/', function (req, res, next) {
   res.sendFile(`${process.cwd()}/index.html`)
 })
-// app.get('/app.js', function (req, res, next) {
-//   res.sendFile(`${process.cwd()}/js/app.js`)
-// })
 
 
 app.listen(PORT, function () {
-  console.log(`listening on port ${PORT}!`)
+  console.log(`listening on port ${PORT}!
+  open http://localhost:5000 in your browser`)
 })

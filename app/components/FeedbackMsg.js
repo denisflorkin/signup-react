@@ -3,15 +3,16 @@ import React from 'react'
 
 
 const style = {
-  minHeight: '2.2em',
+  minHeight: '3em',
+  fontFamily: 'Georgia, serif',
 }
 
 export function FeedbackMsg(props) {
-  const { error: { message } } = props
+  const { error } = props
 
   return (
     <div style={style}>
-      { message }
+      { error ? error.message : 'Good to go' }
     </div>
     )
 }

@@ -54,12 +54,18 @@ export function validateForm(formData) {
   
     /** if the email is not valid */
     if (!formData.email.match(emailRegExp)) {
-      return { message: 'You have to provide a valid email' }
+      return {
+        message: 'You have to provide a valid email',
+        inputName: 'email', // the input name/id
+      }
     }
 
     /** if the password does not match passwordConfirm */
     if (formData.password !== formData.passwordConfirm) {
-      return { message: 'Your password confirmation does not match' }
+      return {
+        message: 'Your password confirmation does not match',
+        inputName: 'passwordConfirm', // the input name/id
+      }
     }
 
     /**

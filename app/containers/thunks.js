@@ -8,7 +8,6 @@ import {
 } from './actions'
 
 
-// export const postFormThunk = (dispatch) => {
 export const postFormThunk = (formData) => (dispatch) => {
   const reqOpts = {
     headers: { 'Content-Type': 'application/json' },

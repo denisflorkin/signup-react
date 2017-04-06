@@ -9,7 +9,7 @@
     "watchify": "mkdir -p js && watchify app/main.js  -o js/app.js --debug -v -t [ babelify --presets [ es2017 ] --plugins [ transform-es2015-modules-commonjs  transform-es2015-modules-commonjs transform-object-rest-spread transform-es2015-destructuring  transform-react-jsx ] ]",
     "dev": "NODE_ENV=dev npm run watchify",
     "build": "NODE_ENV=production npm run browserify",
-    "start": "node app/server & open http://localhost:5000"
+    "start": "node app/server"
   },
   "author": "",
   "license": "ISC",

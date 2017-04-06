@@ -14,6 +14,7 @@ import SubmitInput from '../components/SubmitInput'
 
 
 export class SignupForm extends React.PureComponent {
+
   handleFormSubmit(e) {
     e.preventDefault()
     const theForm = document.forms[SIGNUP_FORM_ID]
@@ -47,22 +48,27 @@ export class SignupForm extends React.PureComponent {
       <Form name={SIGNUP_FORM_ID} onSubmit={handleFormSubmit.bind(this)} >
 
         <label htmlFor="name">Name</label>
-        <Input id="name" name="name" type="text" defaultValue="er"
+        <Input id="name" name="name" type="text" 
+          error={formError}
           onChange={handleFormChange.bind(this)} />
 
         <label htmlFor="email">Email</label>
-        <Input id="email" name="email" type="email" defaultValue="er@ert.rt"
+        <Input id="email" name="email" type="email" 
+          error={formError}
           onChange={handleFormChange.bind(this)} />
 
         <label htmlFor="password">Password</label>
-        <Input id="password" name="password" type="password" defaultValue="e"
+        <Input id="password" name="password" type="password" 
+          error={formError}
           onChange={handleFormChange.bind(this)} />
 
         <label htmlFor="password-confirm">Password confirmation</label>
-        <Input id="passwordConfirm" name="passwordConfirm" type="password" defaultValue="e"
+        <Input id="passwordConfirm" name="passwordConfirm" type="password" 
+          error={formError}
           onChange={handleFormChange.bind(this)} />
 
-        { !formError ? 'Good to go' : (<FeedbackMsg error={formError} />) }
+        <FeedbackMsg error={formError} />
+
         <SubmitInput />
       </Form>
     )

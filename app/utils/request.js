@@ -1,7 +1,9 @@
 import 'whatwg-fetch';
 
 /**
+ * request.js from :
  * https://github.com/react-boilerplate/react-boilerplate/blob/master/app/utils/request.js
+ * (edited by me)
  */
 
 

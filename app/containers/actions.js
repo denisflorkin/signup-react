@@ -56,5 +56,4 @@ export function validateForm(formData) {
 /**
  * async actions creators
  */
-// export const postForm = (formData) => postFormThunk
 export const postForm = postFormThunk
