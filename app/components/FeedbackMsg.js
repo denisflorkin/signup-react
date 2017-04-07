@@ -25,20 +25,20 @@ export function FeedbackMsg(props) {
 
   let theMessage
   if (isFetching) {
-    theMessage = 'Submitting request... 😱'
+    theMessage = messages.submitting
   } else if (atLeastOneInputIsEmpty(formState)) {
-    theMessage = 'Gotta fill it all up '+ formState.name + ' ☝'
+    theMessage = messages.formHasToBeFilled(formState.name)
   } else {
     theMessage =
-      /* first if form validation Error */
+      /* first if form validation Errored */
       formError ? formError.message +' '+ formState.name + ' ❗' : (
         /** second if error (did async stuff broke?) */
-        error ? ( messages[`${error.message}`] || 'An error occured 😓' ) : (
-          /** if none of that, did sign up already suceeded ? */
+        error ? ( messages[`${error.message}`] || messages.default ) : (
+          /** did sign up already suceeded ? */
           signupSucceeded ?
-            'Successfully registered ✨ '
+            messages['signedUp']
             /** if no, the form must be good to go */
-            : 'Good to go 👌 '
+            : messages['formIsValid']
         )
       )
 
