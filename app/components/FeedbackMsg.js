@@ -26,7 +26,7 @@ export function FeedbackMsg(props) {
   let theMessage
   if (isFetching) {
     theMessage = 'Submitting request... 😱'
-  } if (atLeastOneInputIsEmpty(formState)) {
+  } else if (atLeastOneInputIsEmpty(formState)) {
     theMessage = 'Gotta fill it all up '+ formState.name + ' ☝'
   } else {
     theMessage =

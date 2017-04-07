@@ -4,7 +4,7 @@ import theme from '../utils/theme'
 import Loader from './Loader'
 import Checkmark from './Checkmark'
 
-const { darkGray, blue } = theme
+const { darkGray, blue, green } = theme
 
 
 const wrapperStyle = {
@@ -41,19 +41,34 @@ export function SubmitInput(props) {
     ...filterHTMLPropsOnly,
   } = props
 
+  const finalWrapperStyle = {
+    ...wrapperStyle,
+    ...(formIsValid ?
+          (signupSucceeded ? { color: green } : { color: blue })
+          : {}
+      )
+  }
+
   if (isFetching) {
-    return <div style={wrapperStyle} ><Loader /></div>
+    return <div style={finalWrapperStyle} ><Loader /></div>
   }
 
   if (signupSucceeded) {
-    return <div style={wrapperStyle} ><Checkmark /></div>
+    return <div style={finalWrapperStyle} ><Checkmark /></div>
+  }
+
+
+
+
+  const finalInputStyle = {
+    ...inputStyle,
+    ...(formIsValid ? { color: blue } : {} )
   }
 
   return (
-    <div style={wrapperStyle} >
-      
+    <div style={finalWrapperStyle} >
       <input
-        style={inputStyle}
+        style={finalInputStyle}
         type="submit"
         value="Send"
         {...filterHTMLPropsOnly}

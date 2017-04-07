@@ -12,6 +12,7 @@ const wrapperStyle = {
 }
 const checkmarkStyle = {
   stroke: darkGray,
+  stroke: green,
   strokeDashoffset: 745.74853515625,
   strokeDasharray: 745.74853515625,
   animation: 'dash 2s ease-out forwards',
