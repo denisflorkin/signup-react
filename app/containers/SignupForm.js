@@ -60,19 +60,19 @@ export class SignupForm extends React.PureComponent {
 
         <Label htmlFor="name">Name</Label>
         <Input id="name" name="name" type="text"
-          defaultValue='bill'
+          // defaultValue='bill'
           error={formError}
           onChange={handleFormChange.bind(this)} />
 
         <Label htmlFor="email">Email</Label>
         <Input id="email" name="email" type="email"
-          defaultValue='bill@ef.er'
+          // defaultValue='bill@ef.er'
           error={formError}
           onChange={handleFormChange.bind(this)} />
 
         <Label htmlFor="password">Password</Label>
         <Input id="password" name="password" type="password"
-          defaultValue='a'
+          // defaultValue='a'
           error={formError}
           onChange={handleFormChange.bind(this)} />
 
