@@ -65,12 +65,19 @@ export function SubmitInput(props) {
     ...(!formError ? { color: blue } : { color: grey } )
   }
 
+  console.log(error.message)
+  console.log(error.message === 'Failed to fetch')
+
+  const inputValue =
+    error && error.message === 'TypeError: Failed to fetch' ?
+      'Retry' : 'Send';
+
   return (
     <div style={finalWrapperStyle} >
       <input
         style={finalInputStyle}
         type="submit"
-        value="Send"
+        value={inputValue}
         {...filterHTMLPropsOnly}
       />
     </div>
