@@ -5,7 +5,7 @@ import theme from '../utils/theme'
 const { blue } = theme
 
 export function Loader() {
-  const color = blue ? blue : '#4e4e4e';
+  const color = blue ? blue : '#4e4e4e'
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
       <rect x="0" y="0" width="100" height="100" fill="none" />

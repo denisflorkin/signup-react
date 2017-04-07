@@ -1,10 +1,10 @@
 
-import React from 'react'
+import React, { PropTypes } from 'react'
 import theme from '../utils/theme'
 import Loader from './Loader'
 import Checkmark from './Checkmark'
 
-const { darkGray, blue, green } = theme
+const { darkGray, blue, green, grey } = theme
 
 
 const wrapperStyle = {
@@ -16,7 +16,7 @@ const wrapperStyle = {
   justifyContent: 'center',
   alignItems: 'center',
   color: darkGray,
-  border: '1px solid',
+  border: '2px solid',
 }
 
 const inputStyle = {
@@ -33,19 +33,22 @@ const inputStyle = {
 
 export function SubmitInput(props) {
   const {
-    formIsValid,
+    // formIsValid,
     isFetching,
     signupSucceeded,
+    formError,
     error,
 
-    ...filterHTMLPropsOnly,
+    ...filterHTMLPropsOnly, // destructur/assign the rest
   } = props
 
+  // maybe decompose this into small descriptively named fn
+  // like getInputColor(props), getWrapperColor(props)
   const finalWrapperStyle = {
     ...wrapperStyle,
-    ...(formIsValid ?
+    ...(!formError ?
           (signupSucceeded ? { color: green } : { color: blue })
-          : {}
+          : { color: grey }
       )
   }
 
@@ -57,12 +60,9 @@ export function SubmitInput(props) {
     return <div style={finalWrapperStyle} ><Checkmark /></div>
   }
 
-
-
-
   const finalInputStyle = {
     ...inputStyle,
-    ...(formIsValid ? { color: blue } : {} )
+    ...(!formError ? { color: blue } : { color: grey } )
   }
 
   return (
@@ -76,4 +76,13 @@ export function SubmitInput(props) {
     </div>
   )
 }
+
+SubmitInput.propType = {
+  formIsValid: PropTypes.bool.isRequired,
+  isFetching: PropTypes.bool.isRequired,
+  signupSucceeded: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
+  formError: PropTypes.bool.isRequired,
+}
+
 export default SubmitInput

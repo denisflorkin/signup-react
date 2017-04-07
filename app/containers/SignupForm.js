@@ -26,6 +26,7 @@ export class SignupForm extends React.PureComponent {
     e.preventDefault()
     const theForm = document.forms[SIGNUP_FORM_ID]
     const {
+      error,
       onFormSubmit,
       formState,
       formError,
@@ -84,7 +85,8 @@ export class SignupForm extends React.PureComponent {
           signupSucceeded={signupSucceeded} />
 
         <SubmitInput
-          formIsValid={!formError}
+          error={error}
+          formError={formError}
           isFetching={isFetching}
           signupSucceeded={signupSucceeded} />
 
