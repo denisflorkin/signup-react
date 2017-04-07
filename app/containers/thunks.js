@@ -13,18 +13,16 @@ export const getPostFormThunkReqOpts =(formData) => ({
     headers: { 'Content-Type': 'application/json' },
     method: 'POST',
     body: JSON.stringify(formData),
-    // mode: 'CORS',
   })
 
 export const postFormThunk = (formData) => (dispatch) => {
   
-  // first syncronously set `isFetching` to true
+  // first set `isFetching` to true
   dispatch(setIsFetchingToTrue())
   
   const opts = getPostFormThunkReqOpts(formData)
 
   return request('/signup', opts) 
-  // return request('http://localhost/unexistingURLForErrHandlingTestPurp', opts)
     .then(res => {
       if (res.message === 'signup success') {
         dispatch(postFormSuccess(res))

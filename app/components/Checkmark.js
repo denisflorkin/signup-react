@@ -18,7 +18,7 @@ const checkmarkStyle = {
   animation: 'dash 2s ease-out forwards',
 }
 
-export function Checkmark(props) {
+export function Checkmark() {
   return (
     <div>
       <style>{`

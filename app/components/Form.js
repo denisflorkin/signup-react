@@ -9,8 +9,6 @@ const style = {
 }
 
 export function Form(props) {
-  const { stuff } = props
-
   return (
     <form
       style={style}

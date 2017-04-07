@@ -12,6 +12,7 @@ import {
   makeSelectIsFetching,
   makeSelectSignupSucceeded,
 } from './selectors'
+
 import { getFormData, validateForm } from '../utils/formUtils'
 import Form from '../components/Form'
 import Label from '../components/Label'

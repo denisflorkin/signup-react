@@ -4,8 +4,8 @@ import theme from '../utils/theme'
 import Loader from './Loader'
 import Checkmark from './Checkmark'
 
-const { darkGray, blue, green, grey } = theme
 
+const { darkGray, blue, green, grey } = theme
 
 const wrapperStyle = {
   width: '140px',
@@ -33,7 +33,6 @@ const inputStyle = {
 
 export function SubmitInput(props) {
   const {
-    // formIsValid,
     isFetching,
     signupSucceeded,
     formError,
@@ -47,8 +46,10 @@ export function SubmitInput(props) {
   const finalWrapperStyle = {
     ...wrapperStyle,
     ...(!formError ?
-
-          (signupSucceeded ? { color: green } : { color: blue })
+          (signupSucceeded ?
+            { color: green, borderColor: green }
+            : { color: blue, borderColor: blue }
+          )
           : { color: grey }
       )
   }
@@ -65,9 +66,6 @@ export function SubmitInput(props) {
     ...inputStyle,
     ...(!formError ? { color: blue } : { color: grey } )
   }
-
-  console.log(error.message)
-  console.log(error.message === 'Failed to fetch')
 
   const inputValue =
     error && error.message ?
@@ -86,11 +84,16 @@ export function SubmitInput(props) {
 }
 
 SubmitInput.propType = {
-  formIsValid: PropTypes.bool.isRequired,
   isFetching: PropTypes.bool.isRequired,
   signupSucceeded: PropTypes.bool.isRequired,
-  error: PropTypes.bool.isRequired,
-  formError: PropTypes.bool.isRequired,
+  error: PropTypes.oneOfType([
+    PropTypes.object.isRequired,
+    PropTypes.bool.isRequired,
+  ]),
+  formError: PropTypes.oneOfType([
+    PropTypes.object.isRequired,
+    PropTypes.bool.isRequired,
+  ]),
 }
 
 export default SubmitInput

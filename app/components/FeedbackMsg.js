@@ -31,17 +31,17 @@ export function FeedbackMsg(props) {
   } else {
     theMessage =
       /* first if form validation Errored */
-      formError ? formError.message +' '+ formState.name + ' ❗' : (
+      formError ? 
+        formError.message +' '+ formState.name + ' ❗'
         /** second if error (did async stuff broke?) */
-        error ? ( messages[`${error.message}`] || messages.default ) : (
-          /** did sign up already suceeded ? */
-          signupSucceeded ?
-            messages['signedUp']
-            /** if no, the form must be good to go */
-            : messages['formIsValid']
+        : (error ? ( messages[`${error.message}`] || messages.default ) : (
+            /** did sign up already suceeded ? */
+            signupSucceeded ?
+              messages['signedUp']
+              /** if no, the form must be good to go */
+              : messages['formIsValid']
+          )
         )
-      )
-
   }
 
   return (

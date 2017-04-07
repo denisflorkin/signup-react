@@ -5,6 +5,8 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
+import createTheStore from './utils/createTheStore'
+
 import App from './components/App'
 import signupReducer from './containers/reducer'
 
@@ -14,6 +16,7 @@ import signupReducer from './containers/reducer'
  * create the store
  */
 // If Redux DevTools Extension is installed use it, otherwise use Redux compose
+/*
 const composeEnhancers =
   process.env.NODE_ENV !== 'production' &&
   typeof window === 'object' &&
@@ -27,11 +30,8 @@ const middlewares = [
 const enhancers = [
   applyMiddleware(...middlewares),
 ];
-
-const store = createStore(
-    signupReducer,
-    composeEnhancers(...enhancers)
-  )
+*/
+const store = createTheStore(signupReducer)
 
 
 function init() {

@@ -27,7 +27,7 @@ export const getFormData = (HTMLFormElement) => {
     theName = elements[i].name
     theValue = elements[i].value
 
-    if (theValue && theName !== '') {  // ignore numerical HTMLCollectionFromControl key
+    if (theValue && theName !== '') {
       forRes[theName] = theValue
     }
   }
@@ -38,9 +38,8 @@ export const getFormData = (HTMLFormElement) => {
 }
 
 /**
- * @param {object: initialFormData } formData
+ * @param {object} formData
  * @returns {bool} 
- * initialFormData type data => see constants
  */
 export const allInputsHaveATruthyValue = (formData) => (
   formData.name &&
@@ -50,11 +49,9 @@ export const allInputsHaveATruthyValue = (formData) => (
 )
 
 /**
- * @param {object: initialFormData } formData
+ * @param {object} formData
  * @returns {bool} 
- * initialFormData type data => see constants
  */
-// export const notAllInputsHaveBeenFilled = (formData) => (
 export const atLeastOneInputIsEmpty = (formData) => (
   formData.name.length === 0 ||
   formData.email.length === 0 || 

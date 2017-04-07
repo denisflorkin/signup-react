@@ -31,12 +31,10 @@ export function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response;
   }
-  // console.log('response', response)
   const error = new Error(response.statusText || response.status);
   error.status = response.status;
   error.statusText = response.statusText;
   error.response = response;
-  // console.log('error', error)
 
   throw error;
 }
