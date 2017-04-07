@@ -47,6 +47,7 @@ export function SubmitInput(props) {
   const finalWrapperStyle = {
     ...wrapperStyle,
     ...(!formError ?
+
           (signupSucceeded ? { color: green } : { color: blue })
           : { color: grey }
       )
@@ -69,7 +70,7 @@ export function SubmitInput(props) {
   console.log(error.message === 'Failed to fetch')
 
   const inputValue =
-    error && error.message === 'TypeError: Failed to fetch' ?
+    error && error.message ?
       'Retry' : 'Send';
 
   return (

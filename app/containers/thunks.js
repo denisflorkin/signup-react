@@ -13,7 +13,7 @@ export const getPostFormThunkReqOpts =(formData) => ({
     headers: { 'Content-Type': 'application/json' },
     method: 'POST',
     body: JSON.stringify(formData),
-    mode: 'CORS',
+    // mode: 'CORS',
   })
 
 export const postFormThunk = (formData) => (dispatch) => {
