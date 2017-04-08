@@ -5,7 +5,8 @@ const bodyParser = require('body-parser')
 const log = console.log.bind(console)
 
 
-const PORT = Number(process.argv[2]) || 5000
+const PORT = process.env.PORT || Number(process.argv[2]) || 5000
+
 
 const users = []
 const app = express()
