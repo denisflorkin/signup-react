@@ -3,12 +3,12 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const log = console.log.bind(console)
-console.log(process.argv[2])
+
+
 const PORT = Number(process.argv[2]) || 5000
 
 const users = []
 const app = express()
-
 
 app.use(function(req, res, next) { /** CORS middleware */
     res.header("Access-Control-Allow-Origin", "*")
