@@ -10,6 +10,7 @@ const style = {
   display: 'block',
   boxSizing:'border-box',
   border: '1px solid transparent',
+  borderRadius: '0',
   outline: 'none',
   borderBottom: `2px solid ${gray}`,
   padding: '4px 0',
