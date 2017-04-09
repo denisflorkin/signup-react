@@ -1,9 +1,8 @@
 
+## Demo : 
+[https://limitless-spire-67813.herokuapp.com](https://limitless-spire-67813.herokuapp.com)
+
 ## a signup form made with react and redux
-
-`$ git clone git@github.com:denisflorkin/signup-react.git signup-react && cd signup-react`
-
-or
 
 `$ git clone https://github.com/denisflorkin/signup-react signup-react && cd signup-react`
 
