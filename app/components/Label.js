@@ -7,14 +7,18 @@ const style = {
   fontWeight: 100,
 }
 
-export function H1(props) {
-  return (
-    <label
-      style={style}
-      {...props}
-    >
+
+export class Label extends React.PureComponent {
+  render() {
+    const { props } = this
+    return (
+      <label
+        style={style}
+        {...props}
+      >
       { React.Children.toArray(props.children) }
     </label>
-    )
+  )}
 }
-export default H1
+
+export default Label
