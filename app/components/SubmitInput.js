@@ -79,6 +79,7 @@ class SubmitInput extends React.PureComponent {
           style={finalInputStyle}
           type="submit"
           value={inputValue}
+          disabled={formError}
           {...filterHTMLPropsOnly}
         />
       </div>
