@@ -31,56 +31,59 @@ const inputStyle = {
 
 }
 
-export function SubmitInput(props) {
-  const {
-    isFetching,
-    signupSucceeded,
-    formError,
-    error,
+class SubmitInput extends React.PureComponent {
+  render() {
+    const { props } = this 
+    const {
+      isFetching,
+      signupSucceeded,
+      formError,
+      error,
 
-    ...filterHTMLPropsOnly, // destructur/assign the rest
-  } = props
+      ...filterHTMLPropsOnly, // destructur/assign the rest
+    } = props
 
-  // maybe decompose this into small descriptively named fn
-  // like getInputColor(props), getWrapperColor(props)
-  const finalWrapperStyle = {
-    ...wrapperStyle,
-    ...(!formError ?
-          (signupSucceeded ?
-            { color: green, borderColor: green }
-            : { color: blue, borderColor: blue }
-          )
-          : { color: grey }
-      )
+    // maybe decompose this into small descriptively named fn
+    // like getInputColor(props), getWrapperColor(props)
+    const finalWrapperStyle = {
+      ...wrapperStyle,
+      ...(!formError ?
+            (signupSucceeded ?
+              { color: green, borderColor: green }
+              : { color: blue, borderColor: blue }
+            )
+            : { color: grey }
+        )
+    }
+
+    if (isFetching) {
+      return <div style={finalWrapperStyle} ><Loader /></div>
+    }
+
+    if (signupSucceeded) {
+      return <div style={finalWrapperStyle} ><Checkmark /></div>
+    }
+
+    const finalInputStyle = {
+      ...inputStyle,
+      ...(!formError ? { color: blue } : { color: grey } )
+    }
+
+    const inputValue =
+      error && error.message ?
+        'Retry' : 'Send';
+
+    return (
+      <div style={finalWrapperStyle} >
+        <input
+          style={finalInputStyle}
+          type="submit"
+          value={inputValue}
+          {...filterHTMLPropsOnly}
+        />
+      </div>
+    )
   }
-
-  if (isFetching) {
-    return <div style={finalWrapperStyle} ><Loader /></div>
-  }
-
-  if (signupSucceeded) {
-    return <div style={finalWrapperStyle} ><Checkmark /></div>
-  }
-
-  const finalInputStyle = {
-    ...inputStyle,
-    ...(!formError ? { color: blue } : { color: grey } )
-  }
-
-  const inputValue =
-    error && error.message ?
-      'Retry' : 'Send';
-
-  return (
-    <div style={finalWrapperStyle} >
-      <input
-        style={finalInputStyle}
-        type="submit"
-        value={inputValue}
-        {...filterHTMLPropsOnly}
-      />
-    </div>
-  )
 }
 
 SubmitInput.propType = {
