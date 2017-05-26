@@ -1,9 +1,35 @@
 'use strict';
 
 import React, { PropTypes } from 'react'
+import styled from 'styled-components'
+
 import theme from '../utils/theme'
 
-const { green, red, gray } = theme
+
+const { green, red, gray, darkGray } = theme
+
+// const getBorderColor = ({ error }) => !error ?
+
+const getBorderBottomColor = ({ error }) => !error ?
+  `green}`
+  : `2px solid ${red}`
+
+
+const StyledInput = styled.input`
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  border-radius: 0;
+  outline: none;
+  padding: 4px 0;
+  margin: 2px auto 16px auto;
+  font-size: 1.2em;
+  border-bottom: 2px solid ${gray};
+  /* dynmaic styles */
+  border: 2px solid ${({error}) => !error ? 'transparent' : red};
+  border-bottom: 2px solid ${({error}) => !error ? gray : red};
+`
 
 const style = {
   width: '100%',
@@ -50,8 +76,7 @@ export function Input(props) {
   })(error)
 
   return (
-    <input
-      style={finalStyle}
+    <StyledInput
       { ...filterHTMLPropsOnly }
     />
     )
